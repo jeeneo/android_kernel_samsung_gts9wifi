@@ -12,6 +12,8 @@ Copy the contents of this `docs` folder to the root of the newly extracted dir (
 
 Delete the `kernel_platform/common` and clone this repo in it's place. (I'm currently too lazy to make a monorepo for everything, that might change in the future but is currently how I want to publish changes)
 
+For KernelSU-Next/SukiSU-Ultra, init the submodule after the respective checkout (`git submodule update --init --recursive`)
+
 Run `nix-shell` from the projects root.
 
 Then `./build.sh`
