@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+for d in SukiSU-Ultra KernelSU-Next; do
+  if [ -d "$d" ] && ! git ls-tree -d HEAD -- "$d" | grep -q "$d"; then
+    git clean -xffd -- "$d"
+  fi
+done
+
+if git show HEAD:.gitmodules > /dev/null 2>&1; then
+  git submodule update --init --recursive
+fi
