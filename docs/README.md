@@ -10,7 +10,9 @@ Copy the contents of this `docs` folder to the root of the newly extracted dir (
 `cat toolchain_X710.tar.gz.partaa toolchain_X710.tar.gz.partab > toolchain_X710.tar.gz`
 `tar -toolchain_X710.tar.gz` from inside `kernel_platform`, it should extract to `prebuilts/`
 
-Delete the `kernel_platform/common` and clone this repo with `--recurse-submodules` (for KernelSU) in it's place. (I'm currently too lazy to make a monorepo for everything, that might change in the future but is currently how I want to publish changes)
+Delete the `kernel_platform/common` and clone this repo in it's place. (I'm currently too lazy to make a monorepo for everything, that might change in the future but is currently how I want to publish changes)
+
+For KernelSU-Next/SukiSU-Ultra, init the submodule after the respective checkout (`git submodule update --init --recursive`)
 
 Run `nix-shell` from the projects root.
 
