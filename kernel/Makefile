@@ -147,7 +147,14 @@ $(obj)/config_data.gz: $(obj)/config_data FORCE
 
 filechk_cat = cat $<
 
-$(obj)/config_data: $(KCONFIG_CONFIG) FORCE
+# kernel: Use the stock defconfig for /proc/config.gz
+# Userspace reads /proc/config.gz and spits out an error message after boot
+# finishes when it doesn't like the kernel's configuration. In order to
+# preserve our freedom to customize the kernel however we'd like, show
+# userspace the stock kirin config so that it never complains about our
+# kernel configuration.
+# https://github.com/underdog54/android_kernel_samsung_gts9wifi/commit/215ce6dcd5738551b1cbfbd22d8272fb69659d04
+$(obj)/config_data: arch/arm64/configs/stock_gki_defconfig FORCE
 	$(call filechk,cat)
 
 $(obj)/kheaders.o: $(obj)/kheaders_data.tar.xz
